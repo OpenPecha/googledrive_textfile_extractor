@@ -7,18 +7,17 @@
 
 <!-- Replace with 1-sentence description about what this tool is or does.-->
 
-<h3 align="center">Use this repo template for all new Python projects.</h3>
+<h3 align="center">Extract bilingual text pairs from google drive.</h3>
 
 ## Description
 
-Project description goes here.
+We require a script that can download bilingual text from Google Drive and save each text file as a separate repository within the MonlamAI GitHub organization. In our Google Drive, there are BOxxx files and ENxxx files. Our script should create separate repositories named BOxxx and ENxxx for each file in the Monlam GitHub organization. It should copy the contents of each BOxxx and ENxxx file into their respective repositories, maintaining the same file name but in .txt format. Finally, the script should push these changes to the individual GitHub repositories, one for each text file.
 
 ## Project owner(s)
 
 <!-- Link to the repo owners' github profiles -->
 
-- [@10zinten](https://github.com/10zinten)
-- [@evanyerburgh](https://github.com/evanyerburgh)
+- [@gangagyatso4364](https://github.com/gangagyatso4364)
 
 ## Integrations
 
