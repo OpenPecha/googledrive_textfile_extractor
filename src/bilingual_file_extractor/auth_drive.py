@@ -1,8 +1,10 @@
+from pathlib import Path
+
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 
 
-def authorize_google_drive(credentials_file="mycreds.txt"):
+def authorize_google_drive(credentials_file):
     # Initialize GoogleAuth and create a local web server and open the browser
     gauth = GoogleAuth()
 
@@ -23,13 +25,15 @@ def authorize_google_drive(credentials_file="mycreds.txt"):
         gauth.Authorize()
 
     # Create GoogleDrive instance with authenticated GoogleAuth instance
-    drive = GoogleDrive(gauth)  # noqa
+    drive = GoogleDrive(gauth)
 
     # Now you can use 'drive' to interact with Google Drive
     return drive
 
 
-# Call the function to authorize Google Drive
-drive_instance = authorize_google_drive()
+if __name__ == "__main__":
+    json_file = Path("client_secrets")
 
-# Now you can use 'drive_instance' to interact with Google Drive
+    drive_instance = authorize_google_drive(json_file)
+
+    # Now you can use 'drive_instance' to interact with Google Drive
