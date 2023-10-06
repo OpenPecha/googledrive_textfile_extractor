@@ -19,17 +19,9 @@ def authenticate_github(token):
 
 if __name__ == "__main__":
     # Replace with your GitHub username and personal access token
-    github_username = "gangagyatso4364"
-    github_token = "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"
+    github_username = "username"
+    github_token = "github_personal_access_token"
 
-    # Authenticate to GitHub
     # Authenticate to GitHub
     github_client = authenticate_github(github_token)
-
-    # Access a user's repositories
-    user = github_client.get_user(github_username)
-    repositories = user.get_repos()
-
-    # List the repository names
-    for repo in repositories:
-        print(repo.name)
+    # Now you can use github_client to interact with GitHub's API.
