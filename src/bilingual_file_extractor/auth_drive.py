@@ -1,5 +1,3 @@
-from pathlib import Path
-
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 
@@ -33,8 +31,6 @@ def authorize_google_drive(credentials_file):
 
 if __name__ == "__main__":
 
-    json_file = Path("client_secrets")
-
-    drive_instance = authorize_google_drive(json_file)
+    drive_instance = authorize_google_drive("mycreds.txt")
 
     # Now you can use 'drive_instance' to interact with Google Drive
