@@ -2,6 +2,14 @@ from bilingual_file_extractor.auth_drive import authorize_google_drive
 
 
 def list_files_in_drive(folder_id):
+    """_summary_
+
+    Args:
+        folder_id (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
 
     drive_instance = authorize_google_drive("mycreds.txt")
 

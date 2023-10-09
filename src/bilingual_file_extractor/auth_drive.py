@@ -3,6 +3,16 @@ from pydrive.drive import GoogleDrive
 
 
 def authorize_google_drive(credentials_file):
+    """_summary_
+
+    Args:
+        credentials_file (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """ """
+
+    """
     # Initialize GoogleAuth and create a local web server and open the browser
     gauth = GoogleAuth()
 
