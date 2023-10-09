@@ -5,6 +5,12 @@ from bilingual_file_extractor.drive_file_list import list_files_in_drive
 
 
 def download_folder(folder_id, saving_to_path):
+    """_summary_
+
+    Args:
+        folder_id (_type_): _description_
+        saving_to_path (_type_): _description_
+    """
 
     drive_instance = authorize_google_drive("mycreds.txt")
 
