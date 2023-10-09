@@ -15,15 +15,18 @@ def create_github_repo(username, token, repo_name, repo_description=""):
             auto_init=True,  # Initialize with a README file (optional)
         )
         print(f"Repository {repo.full_name} created successfully.")
+
     except Exception as e:
         print(f"Error creating repository: {str(e)}")
+
+    return g.get_user().get_repo(repo_name)
 
 
 if __name__ == "__main__":
 
     # Replace these with your GitHub username and personal access token
-    github_username = "gangagyatso4364"
-    github_token = "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"
+    github_username = "username"
+    github_token = "personal_github_token"
 
     # Define the repository name and description
     repository_name = "new-repo1"
