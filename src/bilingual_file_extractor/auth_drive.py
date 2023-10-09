@@ -3,44 +3,42 @@ from pydrive.drive import GoogleDrive
 
 
 def authorize_google_drive(credentials_file):
-    """_summary_
+    """
+    Authorize access to Google Drive using OAuth2 credentials.
 
     Args:
-        credentials_file (_type_): _description_
+        credentials_file (str): The path to the JSON file containing OAuth2 credentials.
 
     Returns:
-        _type_: _description_
-    """ """
-
+        GoogleDrive: A GoogleDrive instance authenticated with the provided credentials.
     """
-    # Initialize GoogleAuth and create a local web server and open the browser
+    # Initialize GoogleAuth and create a local web server to open the browser for authentication
     gauth = GoogleAuth()
 
-    # Try to load saved client credentials
+    # Try to load saved client credentials if they exist
     gauth.LoadCredentialsFile(credentials_file)
 
     if gauth.credentials is None:
-        # Authenticate if they're not there
+        # Authenticate if no credentials found
         gauth.LocalWebserverAuth()
 
-        # Save the current credentials to a file
+        # Save the current credentials to a file for future use
         gauth.SaveCredentialsFile(credentials_file)
     elif gauth.access_token_expired:
-        # Refresh them if expired
+        # Refresh credentials if they have expired
         gauth.Refresh()
     else:
-        # Initialize GoogleDrive with the credentials
+        # Initialize GoogleDrive with the existing credentials
         gauth.Authorize()
 
-    # Create GoogleDrive instance with authenticated GoogleAuth instance
+    # Create a GoogleDrive instance using the authenticated GoogleAuth instance
     drive = GoogleDrive(gauth)
 
-    # Now you can use 'drive' to interact with Google Drive
     return drive
 
 
 if __name__ == "__main__":
-
+    # Authorize access to Google Drive and get a GoogleDrive instance
     drive_instance = authorize_google_drive("mycreds.txt")
 
     # Now you can use 'drive_instance' to interact with Google Drive

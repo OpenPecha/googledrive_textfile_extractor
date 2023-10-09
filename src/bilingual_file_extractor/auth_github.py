@@ -1,7 +1,7 @@
 from github import Github
 
 
-def authenticate_github(username, token):
+def authenticate_github(token):
     """
     Authenticate to GitHub using a personal access token.
 
@@ -9,19 +9,17 @@ def authenticate_github(username, token):
         token (str): Personal access token for GitHub.
 
     Returns:
-        Github: A PyGithub instance authenticated with the token.
+        Github: A PyGithub instance authenticated with the provided token.
     """
-    g = Github(username, token)
+    # Create a PyGithub instance with the personal access token
+    g = Github(token)
     return g
 
 
-# Now you can use github_client to interact with GitHub's API.
-
 if __name__ == "__main__":
-    # Replace with your GitHub username and personal access token
-    github_username = "github username"
-    github_token = "github personal access token"
+    # Replace with your GitHub personal access token
+    github_token = "github_personal_access_token_here"
 
     # Authenticate to GitHub
-    github_client = authenticate_github(github_username, github_token)
-    # Now you can use github_client to interact with GitHub's API.
+    github_client = authenticate_github(github_token)
+    # Now you can use 'github_client' to interact with GitHub's API.
