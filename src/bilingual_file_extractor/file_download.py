@@ -30,15 +30,21 @@ def download_folder(folder_id, saving_to_path):
 
     # Download each file to the local folder
     for item in file_list:
-        item.GetContentFile(os.path.join(local_folder_path, item["title"]))
+
+        if item["mimeType"] == "application/vnd.google-apps.folder":
+            # If it's a folder, recursively download its contents
+            download_folder(item["id"], saving_to_path)
+
+        else:
+            item.GetContentFile(os.path.join(local_folder_path, item["title"]))
 
 
 if __name__ == "__main__":
     # Replace 'shared_folder_id' with the ID of the Google Drive folder you want to download from
-    shared_folder_id = "google_drive_folder_id_here"
+    shared_folder_id = "you_share_folder_if"
 
     # Replace 'save_to_path' with the local directory where you want to save the downloaded files
-    save_to_path = "path/to/your/local/folder"
+    save_to_path = "path_to_your_local_folder"
 
     # Call the 'download_folder' function to download files from the Google Drive folder
     download_folder(shared_folder_id, save_to_path)
