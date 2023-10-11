@@ -25,7 +25,7 @@ def list_files_in_drive(folder_id):
 
 if __name__ == "__main__":
     # Replace 'shared_folder_id' with the ID of the folder you want to list files from
-    shared_folder_id = "1H_df94P26sDOxQVdTy65UZxJj4IB0iZz"
+    shared_folder_id = "you_write_folder_id_here"
 
     # Call the 'list_files_in_drive' function to retrieve a list of files and folders
     files = list_files_in_drive(shared_folder_id)
@@ -33,4 +33,4 @@ if __name__ == "__main__":
     # Print the list of file IDs and names
     print("Files:")
     for file_info in files:
-        print(f'File ID: {file_info["id"]}, File Name: {file_info["name"]}')
+        print(f'File Name: {file_info["title"]}')
