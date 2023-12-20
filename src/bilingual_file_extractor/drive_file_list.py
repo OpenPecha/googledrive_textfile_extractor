@@ -9,8 +9,7 @@ def list_files_in_drive(folder_id):
         folder_id (str): The ID of the folder to list files from.
 
     Returns:
-        list: A list of dictionaries, where each dictionary contains information about a file or folder.
-              Each dictionary has the keys 'id' for the item's ID and 'name' for the item's name.
+        list: list of files and folders in google drive folder.
     """
     # Authenticate to Google Drive using credentials from 'mycreds.txt'
     drive_instance = authorize_google_drive("mycreds.txt")
@@ -24,13 +23,29 @@ def list_files_in_drive(folder_id):
 
 
 if __name__ == "__main__":
-    # Replace 'shared_folder_id' with the ID of the folder you want to list files from
-    shared_folder_id = "you_write_folder_id_here"
+    # Replace with the IDs of the folders you want to list files from
+    shared_folder_ids = [
+        "1kWP0kSnRhLHmzNW2MQm20XBMqMR3ZFX5",
+        "1ljgik1RcIvd5-_HLIaBnLtxd5Icu7q4H",
+        "17C-LiZMv7wAgn3f6WALbRecYuy0FSRTX",
+        "1H_df94P26sDOxQVdTy65UZxJj4IB0iZz",
+    ]
+    names = []
+    for folder_id in shared_folder_ids:
+        # Retrieve a list of files and folders
+        file_infos = list_files_in_drive(folder_id)
+        for file_info in file_infos:
+            # Extract the name without extension and add to the names list
+            file_name_without_extension = file_info["title"].split(".")[0]
+            names.append(file_name_without_extension)
 
-    # Call the 'list_files_in_drive' function to retrieve a list of files and folders
-    files = list_files_in_drive(shared_folder_id)
+    # Sort the list of names
+    names.sort()
 
-    # Print the list of file IDs and names
-    print("Files:")
-    for file_info in files:
-        print(f'File Name: {file_info["title"]}')
+    # Write the sorted list of names to the file
+    output_filename = "repo_list.txt"
+    with open(output_filename, "w") as file:
+        for name in names:
+            file.write(f"{name}\n")
+
+    print(f"File names have been written to {output_filename}")
